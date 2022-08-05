@@ -7,23 +7,24 @@ use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
-    public function all(Request $request){
+    public function all(){
         $students = Student::simplePaginate(10);
-        return view("students.student-list", [
+        return view("student-list", [
             'students'=>$students,
         ]);
     }
     public function form(){
-        return view("students.formstudent");
+        return view("formstudent");
     }
     public function create(Request $request){
         Student::create(
             [
-                "sid"=>$request->get("sid"),
                 "name"=>$request->get("name"),
-                "birthday"=>$request->get("birthday"),
-                "cid"=>$request->get("cid")
+                "age"=>$request->get("age"),
+                "address"=>$request->get("address"),
+                "telephone"=>$request->get("telephone")
             ]
         );
+        return redirect()->to("/list");
     }
 }

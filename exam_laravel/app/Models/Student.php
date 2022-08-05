@@ -10,12 +10,14 @@ class Student extends Model
     use HasFactory;
     protected $table = 'students';
     protected $primaryKey = 'id';
-    protected $keyType ='int';
+    protected $keyType ='string';
     protected $fillable = [
         'id',
         'name',
         'age',
         'address',
-        'telephone'
+        'telephone',
+        'created_at',
+        'updated_at'
     ];
 }
